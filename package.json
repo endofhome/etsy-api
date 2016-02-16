@@ -4,7 +4,7 @@
   "description": "Craftathon day for DD",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha --reporter spec",
     "start": "node app.js"
   },
   "repository": {
@@ -23,10 +23,12 @@
     "request": "^2.69.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.21",
     "karma-jasmine": "^0.3.7",
+    "mocha": "^2.4.5",
     "rewire": "^2.5.1"
   }
 }
