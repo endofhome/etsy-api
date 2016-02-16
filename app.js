@@ -31,8 +31,8 @@ app.get('/materials', function (req, res) {
              list[material] = 1;
            }
         })
-      })
-      console.log(list);
+      });
+
       var sortedArray = Object.keys(list).sort(function(a,b){return list[b]-list[a]})
       var topFive = sortedArray.splice(0,5);
 
