@@ -17,7 +17,6 @@ describe('etsy', function () {
 
   it('should return 200', function (done) {
     http.get('http://localhost:3000', function (res) {
-      console.log(res);
       expect(res.statusCode).to.equal(200);
       done();
     });

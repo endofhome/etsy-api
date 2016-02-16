@@ -11,6 +11,8 @@ var listingCollection = new ListingCollection();
 app.get('/', function (req, res) {
   request(URL, function (error, response, body) {
     if (!error && response.statusCode == 200) {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(body);
     }
   });
 });
@@ -79,7 +81,6 @@ app.get('/tags', function (req, res) {
            }
         })
       })
-      console.log(list);
       var sortedTagArray = Object.keys(list).sort(function(a,b){return list[b]-list[a]})
       var topFive = sortedTagArray.splice(0,5);
 
