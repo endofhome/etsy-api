@@ -45,7 +45,7 @@ app.get('/materials', function (req, res) {
            }
         });
       });
-      console.log(list);
+
       var sortedArray = Object.keys(list).sort(function(a,b){return list[b]-list[a]})
       var topFive = sortedArray.splice(0,5);
 
@@ -61,6 +61,40 @@ app.get('/materials', function (req, res) {
 
       res.setHeader('Content-type', 'application/json');
       res.send(rawMaterialsData);
+    }
+  })
+})
+
+app.get('/tags', function (req, res) {
+  request(URL, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var data = JSON.parse(body);
+      var list = {};
+      data.results.forEach(function (item) {
+        item.tags.forEach(function (tag) {
+          if (list[tag]) {
+            list[tag] +=1
+            } else {
+             list[tag] = 1;
+           }
+        })
+      })
+      console.log(list);
+      var sortedTagArray = Object.keys(list).sort(function(a,b){return list[b]-list[a]})
+      var topFive = sortedTagArray.splice(0,5);
+
+      var rawTagsData = { "tags": topFive, "results": [] };
+
+      data.results.forEach(function (item) {
+        item.tags.forEach(function (tag) {
+          if (topFive.indexOf(tag) != -1) {
+            rawTagsData.results.push(item);
+          }
+        })
+      });
+
+      res.setHeader('Content-type', 'application/json');
+      res.send(rawTagsData);
     }
   })
 })
