@@ -2,8 +2,8 @@ function ListingCollection() {
     this.data = [];
 }
 
-ListingCollection.prototype.add = function(listing) {
-  this.data.push(listing);
+ListingCollection.prototype.add = function(listings) {
+  this.data = this.data.concat(listings);
 }
 
 ListingCollection.prototype.average = function() {

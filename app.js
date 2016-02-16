@@ -16,16 +16,17 @@ app.get('/', function (req, res) {
   res.send();
 });
 
+app.get('/price', function (req, res) {
+  request(URL, function (error, response, body) {
+    if (!error && response.statusCode == 200) {   
+      parseListings(body);
+      res.send(listingCollection.maximumPriceListing());
+    }
+  })
+})
 
 var parseListings = function(body) {
-  var responseArray = JSON.parse(body)["results"];
-  var listingsArray = [];
-  var arrayLength = responseArray.length;
-  console.log('arrayLength: ' + arrayLength);
-  for (var i = 0; i < arrayLength; i++) {
-    var listing = new Listing(responseArray[i]);
-    listingCollection.add(listing);
-  };
+  listingCollection.add(JSON.parse(body)["results"]);
 };
 
 app.listen(3000, function () {

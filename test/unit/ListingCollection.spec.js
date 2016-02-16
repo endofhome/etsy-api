@@ -27,8 +27,8 @@ describe('ListingCollection', function() {
     listingCollection = new ListingCollection();
   });
 
-  it('should add a listing to the collection', function() {
-    listingCollection.add(mockListingOne);
+  it('should add listings to the collection', function() {
+    listingCollection.add([mockListingOne, mockListingTwo]);
     expect(listingCollection.data[0]).to.equal(mockListingOne);
   });
 
@@ -49,11 +49,11 @@ describe('ListingCollection', function() {
     expect(listingCollection.maximumPriceListing()).to.equal(mockListingOne);
   });
 
-  it('should return highest price', function() {
+  it('should return lowest price', function() {
     expect(listingCollection.minimumPrice()).to.equal(35.00);
   });
 
-  it('should return highest priced listing', function(){
+  it('should return lowest priced listing', function(){
     expect(listingCollection.minimumPriceListing()).to.equal(mockListingTwo);
   });
 });
