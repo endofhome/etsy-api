@@ -4,13 +4,15 @@ var app = require(__dirname + '/../app.js'),
 
 var expect = require("chai").expect;
 
+var mocks = require('../test/mocks');
+
 
 describe('etsy', function () {
 
   beforeEach(function() {
     nock('https://openapi.etsy.com/v2/listings')
                     .get('/active?api_key=w49mqdq0fic46wosw2qa4gw4')
-                    .reply(200, { 'test' : 'testresponse' });
+                    .reply(200, mocks);
 
   });
 
@@ -21,7 +23,7 @@ describe('etsy', function () {
     });
   });
 
-  it('should say "Hello, world!"', function (done) {
+  it('should do something', function (done) {
     http.get('http://localhost:3000', function (res) {
       var data = '';
 
@@ -30,7 +32,7 @@ describe('etsy', function () {
       });
 
       res.on('end', function () {
-        expect(data).to.equal(JSON.stringify({ 'test' : 'testresponse' }));
+        expect(data).to.equal(JSON.stringify(mocks));
         done();
       });
     });
@@ -38,8 +40,20 @@ describe('etsy', function () {
 
 
   describe('materials', function () {
+    it('should do something materially', function (done) {
+      http.get('http://localhost:3000/materials', function (res) {
+        var data = '';
 
+        res.on('data', function (chunk) {
+          data += chunk;
+        });
 
+        res.on('end', function () {
+          expect(data).to.equal(JSON.stringify(["brass","waterproof","sterling silver","14k Gold Filled","egg"]));
+          done();
+        });
+      });
+    });
   });
 
 });

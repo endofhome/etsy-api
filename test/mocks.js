@@ -1,4 +1,4 @@
-{
+module.exports = {
   "count":50100,
   "results":[
     {
