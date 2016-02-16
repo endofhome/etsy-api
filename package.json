@@ -4,7 +4,7 @@
   "description": "Craftathon day for DD",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec",
+    "test": "./node_modules/.bin/mocha --recursive --reporter spec",
     "start": "node app.js"
   },
   "repository": {

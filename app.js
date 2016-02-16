@@ -13,7 +13,9 @@ app.get('/', function (req, res) {
       parseListings(body);
     }
   });
+  res.send();
 });
+
 
 var parseListings = function(body) {
   var responseArray = JSON.parse(body)["results"];

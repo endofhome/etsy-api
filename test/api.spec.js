@@ -10,12 +10,13 @@ describe('/', function () {
   beforeEach(function() {
     nock('https://openapi.etsy.com/v2/listings')
                     .get('/active?api_key=w49mqdq0fic46wosw2qa4gw4')
-                    .reply(200, { 'test' : 'testresponse' });
+                    .reply(200, { "results" : [ {'test' : 'testresponse' } ]});
 
   });
 
   it('should return 200', function (done) {
     http.get('http://localhost:3000', function (res) {
+      console.log(res);
       expect(res.statusCode).to.equal(200);
       done();
     });
@@ -30,7 +31,7 @@ describe('/', function () {
       });
 
       res.on('end', function () {
-        expect(data).to.equal(JSON.stringify({ 'test' : 'testresponse' }));
+        expect(data["results"]).to.equal(JSON.stringify({ 'test' : 'testresponse' }));
         done();
       });
     });
