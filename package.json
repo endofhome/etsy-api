@@ -19,7 +19,8 @@
   "homepage": "https://github.com/matt-paul/etsy-api#readme",
   "dependencies": {
     "express": "^4.13.4",
-    "https": "^1.0.0"
+    "https": "^1.0.0",
+    "request": "^2.69.0"
   },
   "devDependencies": {
     "jasmine": "^2.4.1",
