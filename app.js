@@ -11,18 +11,22 @@ var listingCollection = new ListingCollection();
 app.get('/', function (req, res) {
   request(URL, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      res.setHeader('Content-type', 'application/json');
-      res.send(body);
     }
   });
-  res.send();
 });
 
 app.get('/price', function (req, res) {
   request(URL, function (error, response, body) {
-    if (!error && response.statusCode == 200) {   
+    if (!error && response.statusCode == 200) {
       parseListings(body);
-      res.send(listingCollection.maximumPriceListing());
+      var response = {};
+      response["averagePrice"] = listingCollection.average();
+      response["highestPrice"] = listingCollection.maximumPrice();
+      response["highestPriceListing"] = listingCollection.maximumPriceListing();
+      response["lowestPrice"] = listingCollection.minimumPrice();
+      response["lowestPriceListing"] = listingCollection.minimumPriceListing();
+      res.setHeader('Content-Type', 'application/json');
+      res.send(response);
     }
   });
 });
