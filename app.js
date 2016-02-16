@@ -35,10 +35,19 @@ app.get('/materials', function (req, res) {
       console.log(list);
       var sortedArray = Object.keys(list).sort(function(a,b){return list[b]-list[a]})
       var topFive = sortedArray.splice(0,5);
-      console.log(topFive);
+
+      var rawMaterialsData = { "materials": topFive, "results": [] };
+
+      data.results.forEach(function (item) {
+        item.materials.forEach(function (material) {
+          if (topFive.indexOf(material) != -1) {
+            rawMaterialsData.results.push(item);
+          }
+        })
+      });
 
       res.setHeader('Content-type', 'application/json');
-      res.send(topFive);
+      res.send(rawMaterialsData);
     }
   })
 })
