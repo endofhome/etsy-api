@@ -1,9 +1,15 @@
-var app = require(__dirname + '/../app.js');,
+var napp = require(__dirname + '/../app.js');
     assert = require('assert'),
     http = require('http');
 
-var expect = require("chai").expect;
+// var expect = require("chai").expect;
 
+var rewire = require("rewire");
+var app = rewire("../app.js");
+var mock = require("./mock.json");
+
+app.__set__("path", "/dev/null");
+app.__get__("path");
 
 describe('app', function () {
   before(function () {
@@ -16,6 +22,7 @@ describe('app', function () {
 });
 
 describe('/', function () {
+
   it('should return 200', function (done) {
     http.get('http://localhost:3000', function (res) {
       assert.equal(200, res.statusCode);
@@ -32,7 +39,7 @@ describe('/', function () {
       });
 
       res.on('end', function () {
-        assert.equal('Hello, world!\n', data);
+        assert.equal({ "test": "testresponse" }, data);
         done();
       });
     });
