@@ -1,8 +1,13 @@
 var express = require('express');
 var app = express();
+var https = require('https');
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  https.get('https://openapi.etsy.com/v2/listings/active?api_key=w49mqdq0fic46wosw2qa4gw4',
+    function(data) {
+      console.log(data.body);
+    }
+  );
 });
 
 app.listen(3000, function () {
