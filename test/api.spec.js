@@ -1,31 +1,22 @@
-var napp = require(__dirname + '/../app.js');
-    assert = require('assert'),
-    http = require('http');
+var app = require(__dirname + '/../app.js'),
+    http = require('http'),
+    nock = require('nock');
 
-// var expect = require("chai").expect;
+var expect = require("chai").expect;
 
-var rewire = require("rewire");
-var app = rewire("../app.js");
-var mock = require("./mock.json");
-
-app.__set__("path", "/dev/null");
-app.__get__("path");
-
-describe('app', function () {
-  before(function () {
-    app.listen(3000);
-  });
-
-  after(function () {
-    app.close();
-  });
-});
 
 describe('/', function () {
 
+  beforeEach(function() {
+    nock('https://openapi.etsy.com/v2/listings')
+                    .get('/active?api_key=w49mqdq0fic46wosw2qa4gw4')
+                    .reply(200, { 'test' : 'testresponse' });
+
+  });
+
   it('should return 200', function (done) {
     http.get('http://localhost:3000', function (res) {
-      assert.equal(200, res.statusCode);
+      expect(res.statusCode).to.equal(200);
       done();
     });
   });
@@ -39,7 +30,7 @@ describe('/', function () {
       });
 
       res.on('end', function () {
-        assert.equal({ "test": "testresponse" }, data);
+        expect(data).to.equal(JSON.stringify({ 'test' : 'testresponse' }));
         done();
       });
     });
