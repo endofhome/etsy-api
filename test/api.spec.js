@@ -17,7 +17,6 @@ describe('etsy', function () {
 
   it('should return 200', function (done) {
     http.get('http://localhost:3000', function (res) {
-      console.log(res);
       expect(res.statusCode).to.equal(200);
       done();
     });
@@ -48,7 +47,7 @@ describe('etsy', function () {
         });
 
         res.on('end', function () {
-          expect(data).to.equal(JSON.stringify(["brass","waterproof","sterling silver","14k Gold Filled","egg"]));
+          expect(data).to.equal(JSON.stringify({"materials":["gold","silver","bronze","tin","aluminium"],"results":[{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]},{"materials":["gold","silver","bronze","tin","aluminium"]}]}));
           done();
         });
       });
