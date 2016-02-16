@@ -1,5 +1,5 @@
 var Listing = function (data) {
-    this.data = data;
+    this.data = [];
 }
 
 module.exports = Listing;
