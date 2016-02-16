@@ -1,0 +1,28 @@
+{
+  "name": "etsy",
+  "version": "1.0.0",
+  "description": "Craftathon day for DD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matt-paul/etsy-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matt-paul/etsy-api/issues"
+  },
+  "homepage": "https://github.com/matt-paul/etsy-api#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.21",
+    "karma-jasmine": "^0.3.7"
+  }
+}
