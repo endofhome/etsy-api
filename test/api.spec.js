@@ -5,7 +5,7 @@ var app = require(__dirname + '/../app.js'),
 var expect = require("chai").expect;
 
 
-describe('/', function () {
+describe('etsy', function () {
 
   beforeEach(function() {
     nock('https://openapi.etsy.com/v2/listings')
@@ -35,4 +35,11 @@ describe('/', function () {
       });
     });
   });
+
+
+  describe('materials', function () {
+
+
+  });
+
 });
