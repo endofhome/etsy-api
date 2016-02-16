@@ -13,11 +13,11 @@ describe('etsy', function () {
     nock('https://openapi.etsy.com/v2/listings')
                     .get('/active?api_key=w49mqdq0fic46wosw2qa4gw4')
                     .reply(200, mocks);
-
   });
 
   it('should return 200', function (done) {
     http.get('http://localhost:3000', function (res) {
+      console.log(res);
       expect(res.statusCode).to.equal(200);
       done();
     });
@@ -38,7 +38,6 @@ describe('etsy', function () {
     });
   });
 
-
   describe('materials', function () {
     it('should do something materially', function (done) {
       http.get('http://localhost:3000/materials', function (res) {
@@ -55,5 +54,4 @@ describe('etsy', function () {
       });
     });
   });
-
 });
