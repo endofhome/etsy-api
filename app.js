@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var request = require('request');
-var Listing = require('./app/scripts/model/Listing.js');
 var ListingCollection = require('./app/scripts/model/ListingCollection.js')
 
 var URL = 'https://openapi.etsy.com/v2/listings/active?api_key=w49mqdq0fic46wosw2qa4gw4';
