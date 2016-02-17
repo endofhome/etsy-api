@@ -3,7 +3,6 @@ var app = require(__dirname + '/../app.js'),
     nock = require('nock');
 
 var expect = require("chai").expect;
-
 var mocks = require('../test/mocks');
 
 
