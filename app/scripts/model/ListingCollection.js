@@ -1,10 +1,12 @@
-function ListingCollection() {
+'use strict';
+
+var ListingCollection = function() {
     this.data = [];
-}
+};
 
 ListingCollection.prototype.add = function(listings) {
   this.data = this.data.concat(listings);
-}
+};
 
 ListingCollection.prototype.average = function() {
   var dataLength = this.data.length;
@@ -13,7 +15,6 @@ ListingCollection.prototype.average = function() {
     sum += parseFloat(this.data[i].price);
   }
   return sum/dataLength;
-
 };
 
 ListingCollection.prototype.maximumPrice = function() {
@@ -24,7 +25,7 @@ ListingCollection.prototype.maximumPrice = function() {
     max = (current > max) ? current : max;
   }
   return parseFloat(max);
-}
+};
 
 ListingCollection.prototype.maximumPriceListing = function() {
   var dataLength = this.data.length;
@@ -34,7 +35,7 @@ ListingCollection.prototype.maximumPriceListing = function() {
       return this.data[i];
     }
   }
-}
+};
 
 ListingCollection.prototype.minimumPrice = function() {
   var dataLength = this.data.length;
@@ -44,7 +45,7 @@ ListingCollection.prototype.minimumPrice = function() {
     min = (current < min) ? current : min;
   }
   return parseFloat(min);
-}
+};
 
 ListingCollection.prototype.minimumPriceListing = function() {
   var dataLength = this.data.length;
@@ -54,6 +55,6 @@ ListingCollection.prototype.minimumPriceListing = function() {
       return this.data[i];
     }
   }
-}
+};
 
 module.exports = ListingCollection;

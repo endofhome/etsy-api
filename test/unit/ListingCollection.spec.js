@@ -13,7 +13,7 @@ describe('ListingCollection', function() {
         "price":"36.00",
         "currency_code":"USD",
         "quantity":42
-  }
+  };
   var mockListingTwo =
   {
         "listing_id":220141055,
@@ -21,7 +21,7 @@ describe('ListingCollection', function() {
         "price":"35.00",
         "currency_code":"USD",
         "quantity":86
-  }
+  };
 
   beforeEach(function(){
     listingCollection = new ListingCollection();
